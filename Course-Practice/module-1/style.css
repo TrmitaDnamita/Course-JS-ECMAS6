@@ -7,6 +7,7 @@
 	--red-color: #ea4335;
 	--orange-color: #fcbc04;
 	--green-color: #34a853;
+	--color-white: #aaa;
 	
 	--google-font: 'Google Sans', sans-serif;
 }
@@ -31,7 +32,7 @@ body {
 	text-align: center;
 	gap: 1.5em;
 	
-	max-height: 100vh;
+	min-height: 100vh;
 	line-height: 1.5;
 	font-size: 1.2rem;
 	
@@ -39,6 +40,9 @@ body {
 	
 	padding-inline: 1em;
 	padding-block: 1em;
+	
+	width: 70%;
+	margin-inline: auto;
 }
 
 .spacing {
@@ -47,6 +51,37 @@ body {
 
 .placeholder-center::placeholder {
 	text-align: center;
+}
+
+.some-elements {
+	display: flex;
+	gap: 1em;
+	
+	width: 80%;
+	margin-inline: auto;
+}
+
+.some-elements button {
+	cursor: pointer;
+	height: 50px;
+	width: 20%;
+}
+
+.some-elements button:hover {
+	background-color: var(--blue-color);
+	border: none;
+	transition: all 0.5s ease;
+}
+
+.some-elements textarea {
+	width: 80%;
+	height: 100px;
+}
+
+.some-elements textarea:hover {
+	background-color: var(--color-white);
+	border: black;
+	transition: all 0.5s ease;
 }
 
 table {
