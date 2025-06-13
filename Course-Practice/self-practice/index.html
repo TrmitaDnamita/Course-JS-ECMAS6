@@ -3,47 +3,12 @@
 	<head>
 		<meta charset="UTF-8" />
 		<title>Quadtree</title>
-		<style>
-			* {
-				border-radius: 8px; 
-			}
-			body {
-				background-color: #ece2e2;
-			}
-			canvas { 
-				border: 1px solid #dbcdcd; 
-				display: block; 
-				margin: 20px auto; 
-				background-color: #dbcdcd;
-				box-shadow: 5px 5px 5px #887a7a, -5px -5px 10px #fffafa;
-			}
-			button { 
-				display: block; 
-				background-color: #dadde0;
-				box-shadow: 5px 5px 5px #9e9999, -5px -5px 10px #ffffff;
-				color: black; 
-				border: 1px solid #e0dada; 
-				margin: 20px auto; 
-				width: 20%; 
-				height: 32px; 
-				cursor: pointer;
-			}
-			button:hover {
-				text-shadow: 4px 4px 5px #9e9999, -4px -4px 10px #ffffff;
-				box-shadow: 10px 10px 15px #9e9999, -10px -10px 15px #ffffff;
-				transition: all 0.5s ease;
-			}
-			
-			button:active {
-				text-shadow: 4px 4px 3px #9e9999 inset, -4px -4px 6px #ffffff inset;
-				box-shadow: 10px 10px 15px #9e9999 inset, -10px -10px 15px #ffffff inset;
-				transition: all 0.2s ease;
-			}
-		</style>
 		
+		<link rel="stylesheet" href="style.css">
 		<!-- This works similar to C# script loader hierarchy-->
-		<script src="mathf.js"></script>
-		<script defer src="quadtree.js"></script>
+		<script src="helper.js"></script>
+		<script src="quadtree.js"></script>
+		<script defer src="main.js"></script>
 	</head>
 	<body>
 		<button id="qtButton" onclick="generateContent()">Let's Begin!</button>

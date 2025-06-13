@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
+:root {
+	--primary-color: #ece2e2;
+	--light-color: #ffffff67;
+	--dark-color: #66666667;
+	
+	--font-family-main: 'Roboto', sans-serif;
+	
+	--pix-sm: 4px;
+	--pix-md: 8px;
+	--pix-lg: 12px;
+	--pix-xl: 16px;
+	--pix-xxl: 20px;
+	
+	--mobile-width: 480px;
+	--tablet-width: 768px;
+	--laptop-width: 1024px;
+	--desktop-width: 1280px;
+	--tv-width: 1920px;
+	
+	--light-shadow-outset-tl: -5px -5px 9px var(--light-color);
+	--light-shadow-outset-br: 5px 5px 9px var(--light-color);
+	--dark-shadow-outset-tl: -5px -5px 9px var(--dark-color);
+	--dark-shadow-outset-br: 5px 5px 9px var(--dark-color);
+	
+	--light-shadow-inset-tl: inset 5px 5px 9px var(--light-color);
+	--light-shadow-inset-br: inset -5px -5px 9px var(--light-color);
+	--dark-shadow-inset-tl: inset 5px 5px 9px var(--dark-color) ;
+	--dark-shadow-inset-br: inset -5px -5px 9px var(--dark-color);
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	border-radius: var(--pix-lg);
+	
+	font-family: var(--font-family-main);
+	
+	box-shadow: 
+		var(--light-shadow-outset-tl),
+		var(--dark-shadow-outset-br)
+	;
+}
+
+body {
+	height: 100dvh;
+	max-width: var(--desktop-width);
+	margin: auto;
+	
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	
+	background-color: var(--primary-color);
+}
+canvas { 
+	display: block;
+	padding: var(--pix-md);
+}
+
+button { 
+	display: block; 
+	width: 25%; 
+	height: 40px; 
+	margin: 15px auto; 
+	
+	color: black;
+	background-color: var(--primary-color); 
+	border: none;
+	
+	cursor: pointer;
+}
+button:hover {
+	text-shadow: 
+		-1px -1px 4px black,
+		1px 1px 4px black
+	;
+	color: var(--primary-color);
+	
+	width: 25.1%;
+	transition: all 0.2s ease;
+}
+
+button:active {
+	box-shadow: 
+		var(--light-shadow-inset-br),
+		var(--dark-shadow-inset-tl)
+	;
+	
+	transition: all 0.2s ease;
+}

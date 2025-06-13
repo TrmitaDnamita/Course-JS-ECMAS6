@@ -1,107 +1,110 @@
+/** A 2D vector @param {number} x @param {number} y */
+class Vector2 {
+	constructor(x, y) {
+		this.x = x;
+		this.y = y;
+	}
+}
+/** A 4D vector (Or Rectangle) with x, y, z and w and box width and height @param {number} x @param {number} y @param {number} width @param {number} height */
+class BoxBoundary {
+	constructor(x, y, width, height) {
+		this.x = x;
+		this.y = y;
+		this.z = x + width;
+		this.w = y + height;
+		this.width = width;
+		this.height = height;
+	}
+	/** Check if the entity is in the boundary @param {Vector2} entity */
+	contains(entity) {
+		return entity.x >= this.x && entity.x < this.z && entity.y >= this.y && entity.y < this.w;
+	}
+}
+
 class Quadtree {
-	/** Quadtree constructor
-	 * 
-	 * @param {Vector4} boundBox any object that contains an x, y, z and w property
-	 * @param {number} capacity 
-	 * @param {Quadtree} children
-	 */
-	constructor(boundBox, capacity) {
+	/** Quadtree constructor @param {BoxBoundary} boundBox any object that contains an x, y, z and w property */
+	constructor(boundBox) {
 		this.boundBox = boundBox;
-		this.capacity = capacity;
 		this.children = undefined;
-		this.entities = [];
-		this.divided = false;
+		this.entities = undefined;
+		this.isDivided = false;
 	}
 	
-	generateEntity(width, height) {
-		this.entities.push(
-			new Vector2(
-				Math.floor(Math.random() * width), 
-				Math.floor(Math.random() * height)
+	/**
+	 * Subdivide the quadtree into 4 children
+	 */
+	subdivide() {
+		const x = this.boundBox.x;
+		const y = this.boundBox.y;
+		const width = this.boundBox.width / 2;
+		const height = this.boundBox.height / 2;
+		
+		this.children = [];
+		
+		this.children[Cardinality.NORTH_WEST] = new Quadtree(
+			new BoxBoundary(
+				x, y,
+				width, height
+			)
+		);
+		this.children[Cardinality.NORTH_EAST] = new Quadtree(
+			new BoxBoundary(
+				x + width, y,
+				width, height
+			)
+		);
+		this.children[Cardinality.SOUTH_EAST] = new Quadtree(
+			new BoxBoundary(
+				x + width, y + height,
+				width, height
+			)
+		);
+		this.children[Cardinality.SOUTH_WEST] = new Quadtree(
+			new BoxBoundary(
+				x, y + height,
+				width, height
 			)
 		);
 		
-		if (this.capacity === this.entities.length) {
+		this.isDivided = true;
+	}
+	
+	/**Push the new entity to the quadtree, check if it needs to be subdivided or sent to a child 
+	 * @param {Vector2} entity
+	*/
+	pushEntity(entity) {
+		if (!this.boundBox.contains(entity)) return;
+		
+		if (this.isDivided) {
+			this.children[Cardinality.NORTH_WEST].pushEntity(entity);
+			this.children[Cardinality.NORTH_EAST].pushEntity(entity);
+			this.children[Cardinality.SOUTH_EAST].pushEntity(entity);
+			this.children[Cardinality.SOUTH_WEST].pushEntity(entity);
+			return;
+		}
+		
+		if (this.entities === undefined) { this.entities = []; }
+		else if (this.entities.length >= QUAD_CAPACITY) {
 			this.subdivide();
+			//We push the entity to this.entities and then push it to the children
+			this.entities.push(entity)
+			this.pushEntities(this.entities);
+			this.entities = undefined;
+			return;
 		}
-	}
-	
-	subdivide() {
-		let box = new Vector4 (
-			this.boundBox.x,
-			this.boundBox.y,
-			this.boundBox.z / 2,
-			this.boundBox.w / 2
-		);
 		
-		this.children = [];
-		for(let i = 0; i < QUAD; i++) {
-			this.children.push(new Quadtree(box, this.capacity));
-		}
-		console.error("Where are my Entities??, I need to subdivide!");
-		this.divided = true;
+		this.entities.push(entity);
 	}
 	
-	updateChildren() {
-		
+	/**Push and array of entities alocated in the old undivided quad, then push them to the children 
+	 * @param {Vector2[]} entities
+	*/
+	pushEntities(entities) {
+		entities.forEach(entity => {
+			this.children[Cardinality.NORTH_WEST].pushEntity(entity);
+			this.children[Cardinality.NORTH_EAST].pushEntity(entity);
+			this.children[Cardinality.SOUTH_EAST].pushEntity(entity);
+			this.children[Cardinality.SOUTH_WEST].pushEntity(entity);
+		});
 	}
 }
-
-const QUAD_CAPACITY = 10;
-let quadTree = undefined;
-
-function generateQT(width, height) {
-	quadTree = 
-		new Quadtree(
-			new Vector4(0, 0, width, height), 
-			QUAD_CAPACITY
-		);
-	document.getElementById("qtButton").innerHTML = "Generate Random Entities";
-}
-/**@param {CanvasRenderingContext2D} ctx @param {Quadtree} section*/
-function updateQT(section, ctx) {
-	if (section === undefined) return;
-	
-	if (section.divided) {
-		updateQT(section.children[Cardinality.NORTH_EAST], ctx);
-		updateQT(section.children[Cardinality.NORTH_WEST], ctx);
-		updateQT(section.children[Cardinality.SOUTH_EAST], ctx);
-		updateQT(section.children[Cardinality.SOUTH_WEST], ctx);
-	}
-	
-	section.entities.forEach(
-		(entity) => drawEntity(entity, ctx)
-	);
-	drawQT(section.boundBox.z, section.boundBox.w, ctx);
-}
-
-function drawQT(child_width, child_height, ctx) {
-	ctx.beginPath();
-	ctx.rect(0, 0, child_width, child_height);
-	ctx.lineWidth = 1
-	ctx.stroke();
-	ctx.closePath();
-}
-
-function drawEntity(entity, ctx) {
-	ctx.beginPath();
-	ctx.arc(entity.x, entity.y, 5, 0, TAU, false);
-	ctx.fillStyle = "black";
-	ctx.fill();
-	ctx.closePath();
-}
-
-function generateContent() {
-	const canvas = document.getElementById("myCanvas");
-	const ctx = canvas.getContext("2d");
-	
-	if (quadTree === undefined) { 
-		drawQT(canvas.width, canvas.height, ctx);
-		generateQT(canvas.width, canvas.height); 
-	}else {
-		quadTree.generateEntity(canvas.width, canvas.height);
-	}
-	
-	updateQT(quadTree, ctx);
-}
-
