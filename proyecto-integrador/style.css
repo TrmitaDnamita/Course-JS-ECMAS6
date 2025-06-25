@@ -2,7 +2,7 @@
 
 :root {
 	--primary-color: #ffffffee;
-	--secondary-color: rgb(101, 50, 124);
+	--secondary-color: #6A1B9A;
 	--tertiary-color: rgb(159, 74, 199);
 	--quaternary-color: rgb(156, 25, 150);
 	--light-color: #ffffffbe;
@@ -74,7 +74,9 @@ body {
 	font-size: var(--font-size-xxl);
   flex: 1;
 }
-
+.header img {
+	vertical-align: middle;
+}
 .header .form-icon {
 	position: relative;
 	width: var(--title-ico-width);
