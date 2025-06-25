@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
 
 :root {
-	--primary-color: #ece2e2;
-	--light-color: #ffffff67;
-	--dark-color: #66666667;
+	--primary-color: #d6d5d3;
+	--light-color: #ffffff86;
+	--dark-color: #66666685;
 	
 	--font-family-main: 'Roboto', sans-serif;
 	
@@ -20,14 +20,14 @@
 	--tv-width: 1920px;
 	
 	--light-shadow-outset-tl: -5px -5px 9px var(--light-color);
-	--light-shadow-outset-br: 5px 5px 9px var(--light-color);
+	--light-shadow-outset-br: 3px 3px 9px var(--light-color);
 	--dark-shadow-outset-tl: -5px -5px 9px var(--dark-color);
-	--dark-shadow-outset-br: 5px 5px 9px var(--dark-color);
+	--dark-shadow-outset-br: 3px 3px 9px var(--dark-color);
 	
-	--light-shadow-inset-tl: inset 5px 5px 9px var(--light-color);
-	--light-shadow-inset-br: inset -5px -5px 9px var(--light-color);
-	--dark-shadow-inset-tl: inset 5px 5px 9px var(--dark-color) ;
-	--dark-shadow-inset-br: inset -5px -5px 9px var(--dark-color);
+	--light-shadow-inset-tl: inset 4px 4px 9px var(--light-color);
+	--light-shadow-inset-br: inset -8px -8px 9px var(--light-color);
+	--dark-shadow-inset-tl: inset 4px 4px 9px var(--dark-color) ;
+	--dark-shadow-inset-br: inset -8px -8px 9px var(--dark-color);
 }
 
 * {
@@ -37,15 +37,10 @@
 	border-radius: var(--pix-lg);
 	
 	font-family: var(--font-family-main);
-	
-	box-shadow: 
-		var(--light-shadow-outset-tl),
-		var(--dark-shadow-outset-br)
-	;
 }
 
 body {
-	height: 100dvh;
+	max-height: 100dvh;
 	max-width: var(--desktop-width);
 	margin: auto;
 	
@@ -56,9 +51,16 @@ body {
 	
 	background-color: var(--primary-color);
 }
+
 canvas { 
 	display: block;
 	padding: var(--pix-md);
+	margin-block: var(--pix-xxl);
+	
+	box-shadow: 
+		var(--light-shadow-inset-br),
+		var(--dark-shadow-inset-tl)
+	;
 }
 
 button { 
@@ -91,4 +93,18 @@ button:active {
 	;
 	
 	transition: all 0.2s ease;
+}
+
+.neomorphic-out {
+	box-shadow: 
+		var(--light-shadow-outset-tl),
+		var(--dark-shadow-outset-br)
+	;
+}
+
+.neomorphic-in {
+	box-shadow: 
+		var(--light-shadow-inset-br),
+		var(--dark-shadow-inset-tl)
+	;
 }

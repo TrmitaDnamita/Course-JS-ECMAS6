@@ -1,0 +1,210 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
+:root {
+	--primary-color: #ffffffee;
+	--secondary-color: rgb(101, 50, 124);
+	--tertiary-color: rgb(159, 74, 199);
+	--quaternary-color: rgb(156, 25, 150);
+	--light-color: #ffffffbe;
+	--dark-color: #0202026e;
+	
+	--font-family-main: 'Roboto', sans-serif;
+	
+	--pix-sm: 4px;
+	--pix-md: 8px;
+	--pix-lg: 12px;
+	--pix-xl: 16px;
+	--pix-xxl: 20px;
+	
+	--font-size-sm: 14px;
+	--font-size-md: 18px;
+	--font-size-lg: 28px;
+	--font-size-xl: 36px;
+	--font-size-xxl: 48px;
+	
+	--mobile-width: 480px;
+	--tablet-width: 768px;
+	--laptop-width: 1024px;
+	--desktop-width: 1280px;
+	--tv-width: 1920px;
+	
+	--light-shadow-outset-tl: -0px -0px 4px var(--light-color);
+	--dark-shadow-outset-br: 4px 4px 8px var(--dark-color);
+	
+	--border-radius-btm-md: 0 0 12px 12px;
+	--title-ico-width: 36px;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html {
+	font-family: var(--font-family-main);
+}
+
+body {
+	min-height: 100dvh;
+	width: 100%;
+	max-width: var(--laptop-width);
+	margin: auto;
+	
+	display: flex;
+	flex-direction: column;
+	background-color: var(--secondary-color);
+}
+
+.header {
+	display: flex;
+  align-items: center;
+  justify-content: space-between;
+	width: 80%;
+	margin-inline: auto;
+  padding: var(--pix-lg) var(--pix-xl);
+	color: var(--primary-color);
+}
+.center-title-fake {
+	width: var(--title-ico-width);
+	visibility: hidden;
+}
+.header .page-title {
+	text-align: center;
+	font-size: var(--font-size-xxl);
+  flex: 1;
+}
+
+.header .form-icon {
+	position: relative;
+	width: var(--title-ico-width);
+	height: auto;
+	transform: translateY(18%);
+	vertical-align: middle;
+	
+	animation: icon-bounce 5s ease-in-out infinite alternate;
+}
+
+.main {
+	display: flex;
+	flex-direction: column;
+	place-items: center;
+	margin: var(--pix-xxl) auto;
+	padding: var(--pix-xxl) var(--pix-lg);
+	width: 80%;
+	height: auto;
+	background-color: var(--primary-color);
+	border-radius: 12px;
+	box-shadow: var(--light-shadow-outset-tl), var(--dark-shadow-outset-br);
+}
+
+.main-title {
+	font-size: var(--font-size-lg);
+	font-weight: 300;
+}
+
+.form-price-query {
+	display: flex;
+	flex-direction: column;
+	place-items: center;
+	width: 100%;
+	padding:  var(--pix-lg) var(--pix-xl);
+	gap: var(--pix-lg);
+}
+
+@keyframes icon-bounce {
+  0%, 100%   { transform: translateY(0); }
+  50%        { transform: translateY(-1px); }
+}
+
+.form-price-query > label {
+	width: 100%;
+	max-width: 600px;
+	height: auto;
+	
+	display: flex;
+	flex-direction: column;
+}
+
+.form-price-query > label > span {
+	font-size: var(--font-size-md);
+	font-weight: 500;
+	text-align: center;
+	padding-block: var(--pix-md);
+}
+
+.form-price-query select {
+	height: 40px;
+	cursor: pointer;
+	border: 1px solid #aaa;
+	border-radius: 4px;
+	padding: var(--pix-sm);
+	background-image: url('./images/arrow.svg');
+	background-size: 40px 32px;
+	background-position: right top;
+	background-repeat: no-repeat;
+	appearance: none;
+	line-height: 1.5;
+	font-size: var(--font-size-md);
+	font-family: 'Arial Narrow', Arial, sans-serif;
+}
+
+.input-square-mtr {
+	height: 40px;
+	border: 1px solid #aaa;
+	border-radius: 4px;
+	padding: var(--pix-sm);
+	line-height: 1.5;
+	font-size: var(--font-size-md);
+	font-family: 'Arial Narrow', Arial, sans-serif;
+}
+
+.main-form-button {
+	border-radius: var(--pix-sm);
+	padding: var(--pix-lg) var(--font-size-xl);
+	margin-top: var(--pix-lg);
+	
+	color: var(--tertiary-color);
+	border: 2px solid var(--tertiary-color);
+	cursor: pointer;
+}
+
+.main-form-button:hover {
+	border-color: var(--tertiary-color);
+	background-color: var(--tertiary-color);
+	color: var(--light-color);
+	text-shadow: 0px 0px 4px #0006;
+	box-shadow: var(--light-shadow-outset-tl), var(--dark-shadow-outset-br);
+}
+
+.main-form-button:active {
+	border-color: var(--primary-color);
+	background-color: var(--tertiary-color);
+	color: var(--light-color);
+	text-shadow: 0px 0px 4px #0006;
+	box-shadow: var(--light-shadow-outset-tl) inset, var(--dark-shadow-outset-br) inset;
+	cursor: default;
+}
+
+.main-form-button span {
+	font-size: var(--font-size-sm);
+	font-weight: bolder;
+	letter-spacing: 1px;
+}
+
+.main-price-tag {
+	font-size: var(--font-size-lg);
+	font-family: sans-serif;
+	font-weight: bolder;
+	color: var(--quaternary-color);
+	padding-block: var(--pix-xl);
+}
+
+#error-handler-element {
+	color: rgba(255, 0, 0, 0.562);
+	font-size: var(--font-size-sm);
+	font-weight: 700;
+	letter-spacing: 1px;
+	font-family: 'Gill Sans', system-ui;
+	text-align: center;
+}

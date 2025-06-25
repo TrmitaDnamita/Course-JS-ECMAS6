@@ -1,8 +1,8 @@
+const ASCII_LENGTH = 256;
+const ROW_LENGTH = 8;
+const TABLE_LENGTH = Math.floor(ASCII_LENGTH / ROW_LENGTH);
+
 document.addEventListener("DOMContentLoaded", () => {
-	const ASCII_LENGTH = 256;
-	const ROW_LENGTH = 8;
-	
-	const tableLength = Math.floor(ASCII_LENGTH / ROW_LENGTH);
 	const asciiTableRows = [];
 	
 	asciiTableRows.push(`
@@ -18,9 +18,9 @@ document.addEventListener("DOMContentLoaded", () => {
 	
 	let col = [];
 	
-	for (let i = 0; i <= tableLength; i++) {
-		for (let j = 0; j <= tableLength; j++) {
-			let actualPos = j + (tableLength * j) + i
+	for (let i = 0; i <= TABLE_LENGTH; i++) {
+		for (let j = 0; j <= TABLE_LENGTH; j++) {
+			let actualPos = j + (TABLE_LENGTH * j) + i
 			col[j] = actualPos < ASCII_LENGTH ? actualPos : NaN;
 		}
 		

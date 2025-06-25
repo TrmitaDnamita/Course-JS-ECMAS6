@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Trabajo Integrador JS</title>
+	
+	<link rel="shortcut icon" href="./images/favicon.svg" type="image/x-icon">
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<header class="header">
+		<div class="center-title-fake"></div>
+		<h1 class="page-title">Seguros del Hogar 🏡</h1>
+		<img class="form-icon"
+			src="./images/form.png" width="32px" height="32" 
+			alt="https://www.freepik.es/icono/trabajo_10485121 - Icono de un formulario extraído de Freepik"
+		/>
+	</header>
+	<main class="main">
+		<h2 class="main-title">Completa los datos solicitados</h2>
+		<form id="form-price-query" class="form-price-query">
+			<label id="form-label-fm">
+				<span>Selecciona el tipo de propiedad</span>
+			</label>
+			<label id="form-label-ub">
+				<span>Selecciona su ubicación</span>
+			</label>
+			<label id="form-label-ub-sub"></label>
+			<label>
+				<span>Ingresa los Metros cuadrados</span>
+				<input
+					type="number" class="input-square-mtr" id="input-square-mtr" placeholder=" Entre 20 a 500mt^2" autocomplete="off" inputmode="numeric" min="20" max="500" required
+				>
+			</label>
+			<button type="submit" class="main-form-button">
+				<span>Cotizar</span>
+			</button>
+		</form>
+		<span id="error-handler-element"></span>
+		<p class="main-price-tag">Precio estimado: $ <span id="precio-estimado-output">0.0</span></p>
+	</main>
+	<script src="main.js" defer></script>
+</body>
+</html>
