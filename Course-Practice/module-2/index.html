@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Validation Login</title>
+  
+  <link rel="stylesheet" href="style.css">
+  <script src="main.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Validation Login</h1>
+  </header>
+  <main>
+    <form id="login-form" name="login-form" class="login-form">
+      <div class="input-container">
+        <img class="ico-visual-help" src="./user.svg" alt="user representation">
+        <input class="input-login" id="username" type="text" placeholder=" Usuario" required />
+      </div>
+      <div class="input-container">
+        <img class="ico-visual-help" src="./lock.svg" alt="user representation">
+        <input class="input-login password" id="password" type="password" placeholder=" ********" data-state="hidden" autocomplete="off" required />
+        <button class="password-eye-btn" type="submit" id="password-eye-btn" >
+          <img class="ico-password" id="ico-password" src="./open_eye.svg" alt="Make the password visible by clicking this button" data-state="hidden">
+        </button>
+      </div>
+      <div><span id="error-handler-element" type="error"></span></div>
+      <button type="submit" value="Login" class="login-button">Login</button>
+      <section class="remember-me-section">
+        <input type="checkbox" name="remember" id="remember-me-input" class="remember-me-input">
+        <label for="remember-me-input" class="remember-me-label">Recordarme</label>
+      </section>
+    </form>
+  </main>
+</body>
+</html>

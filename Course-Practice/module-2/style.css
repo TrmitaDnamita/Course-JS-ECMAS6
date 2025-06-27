@@ -1,0 +1,186 @@
+:root {
+  --blue-1: #5974ff;
+  --blue-2: #6c64fc;
+  --light-blue: #41fff2;
+  --shade-white: #d8d9db;
+  --white: #e3e4eb;
+  
+  --mobile: 480px;
+  --tablet: 768px;
+  --desktop: 1024px
+  
+  --pad-sm: 16px;
+  --pad-md: 1rem;
+  --pad-lg: 1.5rem;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16dvh;
+  background-color: var(--white);
+  
+  width: 80%;
+  max-width: var(--tablet);
+  min-height: 100dvh;
+  
+  margin: auto;
+  padding: 1rem 2rem;
+}
+
+h1 {
+  text-align: center;
+}
+
+.login-form, h1 {
+  display: flex;
+  place-items: center;
+  flex-direction: column;
+  padding: 20px 18px;
+  border: 2px solid var(--blue-2);
+  border-radius: 10px;
+  box-shadow: 
+    10px 12px 2px -4px #41fff2,
+    22px 24px 20px -4px #616464;
+  row-gap: 8px;
+  max-width: 450px;
+  width: 100%;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  padding: 2px auto;
+  gap: 0;
+}
+
+.ico-visual-help {
+  background-color: var(--blue-1);
+  border-radius: 5px 0 0 5px;
+  width: 40px;
+  min-width: 40px;
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.input-login {
+  background-color: var(--shade-white);
+  border: 1px solid var(--shade-white);
+  border-radius: 0 5px 5px 0;
+  height: 46px;
+  width: 100%;
+  flex: 1;
+  padding: 0 12px;
+  font-size: 1rem;
+}
+
+.ico-password {
+  background-color: var(--blue-1);
+  border-radius: 0 5px 5px 0;
+  width: 40px;
+  min-width: 40px;
+  height: 46px;
+  padding: 5px;
+  &[data-state="visible"] {
+    background-color: var(--shade-white);
+    border: 2px solid var(--blue-1);
+  }
+}
+
+/* For the eye button inside password field */
+.password-eye-btn {
+  background: none;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.login-button {
+  width: 100%;
+  height: 40px;
+  border-radius: 6px;
+  border: 2px solid var(--blue-1);
+  background-color: var(--blue-1);
+  color: var(--shade-white);
+  font-size: 20px; 
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.login-button:hover {
+  background-color: var(--shade-white);
+  color: var(--blue-1);
+}
+
+.login-button:active {
+  background-color: var(--shade-white);
+  color: var(--blue-1);
+  box-shadow: inset 4px 4px 12px 0px #3335,inset -4px -4px 4px 0px #fff;
+}
+
+.remember-me-section {
+  height: 32px;
+  
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-self: flex-start;
+  align-items: center;
+  
+  gap: 10px;
+  
+  color: #56fe;
+  font-weight: 600;
+}
+
+span[type='error'] {
+  display: none;
+  color: rgba(156, 40, 40, 0.774);
+  padding: 2px 6px;
+  border: 2px solid rgba(156, 40, 40, 0.774);
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+input[type='checkbox'] {
+  text-align: center;
+  display: table-cell;
+  vertical-align: middle;
+  width: 24px !important;
+  height: 24px !important;
+  appearance: none;
+  border-radius: 10%;
+  background-color: #d8d9db;
+  border: 1px solid #a0a0a0; /* darker border to hint it's clickable */
+  box-shadow: none;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+input[type='checkbox']:checked {
+  background-color: #5974ff;
+  border-color: #5974ff;
+}
+
+input[type='checkbox']:checked::after {
+  content: '\2713'; /* checkmark */
+  color: #d8d9db;
+  display: block;
+  text-align: center;
+  line-height: 20px;
+  font-size: 1em;
+}

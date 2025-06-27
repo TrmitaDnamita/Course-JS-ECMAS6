@@ -3,7 +3,8 @@ function handleError(isError, errorMsg = '') {
   
   errorRef = isError
   let errorElement = document.getElementById('error-handler-element')
-
+  
+  errorElement.style.display = isError ? 'block' : 'none'
   isError ? errorElement.innerHTML =  errorMsg: errorElement.innerHTML = errorMsg
 }
 
