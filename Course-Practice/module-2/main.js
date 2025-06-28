@@ -67,9 +67,9 @@ function handleError(isError, errorMsg = '') {
   
   formState.hasError = isError
   let errorElement = document.getElementById('error-handler-element')
-  
+
   errorElement.style.display = isError ? 'block' : 'none'
-  isError ? errorElement.innerHTML =  errorMsg: errorElement.innerHTML = errorMsg
+  errorElement.innerHTML =  errorMsg
 }
 
 let cachedIP = null; // Use a consistent variable for caching

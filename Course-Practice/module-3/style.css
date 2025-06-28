@@ -1,0 +1,123 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+/* Estilos generales del cuerpo para centrar la tabla */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f4f7f9;
+  margin: 0;
+  min-width: 560px;
+}
+
+header {
+  background-color: #ffea73;
+  width: 100%;
+  color: #1e3a59;
+  text-align: center;
+  padding: 1rem 0;
+  border-radius: 0 0 10px 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1), 0 -4px 15px rgba(0, 0, 0, 0.1);
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 8dvh;
+}
+
+/* Contenedor de la tabla */
+.table-container {
+  width: 80%;
+  max-width: 800px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+  /* Asegura que los bordes redondeados se apliquen a la tabla interna */
+}
+
+/* Estilos de la tabla */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  /* Elimina el espacio entre bordes */
+  text-align: left;
+  color: #333;
+}
+
+/* Estilos para celdas de encabezado (th) y celdas de datos (td) */
+th,
+td {
+  padding: 10px 14px;
+}
+
+/* Encabezado de la tabla */
+thead tr {
+  background-color: #eaf2f8;
+  /* Fondo azul claro como en la imagen */
+  color: #1e3a59;
+  /* Color de texto azul oscuro */
+  font-weight: bold;
+}
+
+/* Cuerpo de la tabla */
+tbody tr {
+  border-bottom: 1px solid #e0e0e0;
+  /* Línea separadora sutil */
+}
+
+/* Estilo de "cebra" para filas pares para mejorar la legibilidad */
+tbody tr:nth-child(even) {
+  background-color: #dfe2e4;
+}
+
+/* Estilo al pasar el cursor sobre una fila */
+tbody tr:hover {
+  background-color: #f1f1f1;
+}
+
+/* Alineación a la derecha para las columnas con números */
+.text-right {
+  text-align: right;
+  
+  &[data-status="neutral"] {
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+  
+  &[data-status="ok"] {
+    background-color: rgba(0, 255, 0, 0.3);
+  }
+
+  &[data-status="error"] {
+    background-color: rgba(255, 0, 0, 0.33);
+  }
+}
+
+.balance-row {
+  background-color: #eaf2f8;
+  font-weight: bold;
+  color: #1e3a59;
+  box-shadow: inset 2px 2px 6px #1e3a5966, inset -3px -3px 8px #1e3a5966;
+}
+
+.spacing {
+  margin: 2dvh 0;
+  background-color: #eaf2f8;
+  box-shadow: inset 2px 2px 6px #1e3a5966, inset -3px -3px 8px #1e3a5966;
+  border: 2px solid #1e3a59;
+  border-radius: 10px;
+  width: 90dvw;
+}
+
+caption {
+  padding: 8px 0 24px 0;
+  font-weight: bold;
+  color: rgba(31, 28, 23, 0.774);
+}

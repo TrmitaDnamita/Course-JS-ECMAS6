@@ -51,12 +51,13 @@ const UB = {
 // Factores multiplicadores según tipo de vivienda
 const FM = {
   '...': null,
-  'Casa a la calle': 1.07,
-  'Departamento en edificio': 1.04,
-  'Casa en barrio cerrado': 1.21,
-  'Casa de veraneo': 1.15,
-  'PH': 1.05,
-  'Quinta de fin de semana': 1.18
+  'Casa': '1.089',
+  'P.H.': '1.085',
+  'Dto. Edificios': '1.002',
+  'Barrio Privado': '1.819',
+  'Oficina': '1.839',
+  'Local comercial': '1.041',
+  'Depósito logística': '1.092'
 }
 
 // Costo base (por ejemplo, en pesos argentinos)
